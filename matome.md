@@ -2872,13 +2872,7 @@ floatでテキストの回り込みを行う際、矩形だけではなく円形
 
 #### columns(-count/-width)
 
-マルチカラムの幅、カラム数をまとめて指定する。
-
-```css
-.multiclm{
-    columns:50px 3;
-}
-```
+マルチカラムの幅、カラム数をまとめて指定する
 
 #### column-rule(-color/-style/-width)
 
@@ -2886,30 +2880,60 @@ floatでテキストの回り込みを行う際、矩形だけではなく円形
 
 #### column-span
 
-#### colmn-fill
+マルチカラムの中に章題を記載するときなど、その要素がすべてのカラムを跨いで表示させるか否かを指定する。
+
+#### column-fill
+
+マルチカラムの各カラムの行数に関するアルゴリズムを指定する。
+
+```css
+.muoticol_box{
+    columns: 3;
+    column-rule: 1px dashed red;
+}
+```
 
 ### フレックスボックス
 
+#### flex
+
+flex-grow,flex-shrink,flex-basisをまとめて指定する。
+
+flexboxを用いると、コンテンツを横方向に並べることができる。
+
+#### flex-grow(-shrink)
+
+フレックスアイテムの伸長係数・圧縮係数を指定する。フレックスアイテムの横幅の合計が、フレックスコンテナのコンテンツ領域の幅に達しない場合に、伸長係数に従ってフレックスアイテムの横幅が伸長・圧縮される。
+
+#### flex-basis
+
+フレックスアイテムの横幅（高さ）を指定する。
+
 #### flex-flow
+
+flex-directionとflex-wrapをまとめて指定する。
 
 #### flex-direction
 
+フレックスアイテムを並べる方向を指定する。
+
 #### flex-wrap
+
+フレックスアイテムがフレックスコンテナに収まらない場合、はみ出しても一列に並べて表示するか、複数行に改行して表示するかを制御する。
 
 #### order
 
-#### flex
+フレックスアイテムや、フレックスコンテナ内の絶対位置指定に対して、表示する順序を指定する。
 
-#### flex-grow
-
-#### flew-shrink
-
-#### flex-basis
+```css
+.boxa{ flex:1; background-color:#fcc; }
+.boxb{ flex:2; background-color:#cfc; }
+```
 
 ### グリッド
 
 #### grid
-
+Zz 
 #### grid-template
 
 #### grid-template-areas
