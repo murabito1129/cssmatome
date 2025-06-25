@@ -3031,21 +3031,66 @@ startやend,normalやstretch,centerなどが指定できる。
 
 ### コンテナクエリ系プロパティ
 
-#### container
+#### container(-name/-type)
 
-#### container-name
+画面内の矩形領域の横幅等に応じて異なるスタイルを適用するのがコンテナクエリ。コンテナのcontainer-typeにinline-sizeまたはsizeを指定し、@containerで異なるスタイルを指定する条件とスタイルを指定する。またcontainer-nameで名前を付けると、それを対象にすることができる。
 
-#### container-type
+```css
+.my-container{
+    resize: horizontal;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    overflow: hidden;
+    container-name: my-container;
+    container-type: inline-size;
+}
+.my-sub-container{
+    resize: horizontal;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    overflow: hidden;
+}
+@container my-container (width < 400px) {
+    .my-target {color:red;}
+}
+```
 
 ### スクロール関連
 
 #### scroll-hehavior
 
+リンクをクリックしてジャンプする際にスクロールが発生する場合、スムースなスクロールでジャンプする。
+
+```css
+html{
+    scroll-behavior: smooth;
+}
+```
+
 #### scroll-snap-type
+
+スクロールする際にスクロール位置がスナップ領域に合わせて調整される。
+
+```css
+.snap-container{
+    height: 10rem; width: 20rem;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+```
 
 #### scroll-snap-align
 
-#### scroll-snap-stop
+スクロールをスナップする際、スナップ領域の銅の部分に調整するかを指定する。値を二つ指定した倍は一つ目がブロック方向、二つ目がインライン方向の値となる。
+
+```css
+.snap-content{
+    height: 15rem;
+    background-color: #ddd;
+    scroll-snap-align: start;
+}
+```
+-stop
 
 #### scroll-margin(-top/-right/-bottom/-left)
 
