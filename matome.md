@@ -2899,7 +2899,7 @@ floatでテキストの回り込みを行う際、矩形だけではなく円形
 
 flex-grow,flex-shrink,flex-basisをまとめて指定する。
 
-flexboxを用いると、コンテンツを横方向に並べることができる。
+シンプルに横並びにしたい場合や、要素が増える可能性がある場合、また両端揃えにしたい場合に使われる。
 
 #### flex-grow(-shrink)
 
@@ -2933,62 +2933,101 @@ flex-directionとflex-wrapをまとめて指定する。
 ### グリッド
 
 #### grid
-Zz 
-#### grid-template
 
-#### grid-template-areas
+各行の高さ、各列の高さをそれぞれ指定する。
 
-#### grid-template-rows
+グリッドを意識したデザインであったり、要素が不確定に増えないレイアウトであった場合によく使われる。
 
-#### grid-template-columns
+```css
+.container-grid{
+    display: grid;
+    grid: 2rem 2rem / 4rem 4rem 4rem;
+}
+```
+
+#### grid-template(-areas/-row/-columns)
+
+-template-rowsとtemplate-columnsをまとめて指定したり、エリア名、ライン名を定義したりする。
+
+```css
+.container-grid{
+    grid-template:
+        "head head head"
+        "menu main side"
+        "foot foot foot";
+}
+```
 
 #### grid-auto-flow
 
-#### grid-auto-rows
+グリッドアイテムを並べる方向をrowまたはcolumnで指定する。denseを指定すると、空きスペースをなるべく埋めるように配置する。
 
-#### grid-auto-columns
+```css
+.grid-container-row{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 2rem 2rem;
+    grid-template-columns: 4rem 4rem;
+}
+```
 
-#### grid-area
+#### grid-auto-rows(-columns)
 
-#### grid-row
+グリッドで区切られた領域のデフォルトの高さと横幅を指定する。
 
-#### grid-column
+```css
+.grid-container{
+    display: grid;
+    grid-auto-rows: 2rem;
+    grid-auto-columns: 4rem;
+    grid-template-areas: "a a a";
+}
+```
 
-#### grid-row-start
+#### grid-area(-row/-column)(-start/-end)
 
-#### grid-row-end
+グリッドのアイテムに対して、どの位置に表示するかを指定する。
+gridやgrid-template-areasで定義したエリア名を指定するか、もしくはグリッド戦の開始位置・終了位置を指定する。
 
-#### grid-column-start
-
-#### grid-column-end
+```css
+.header{
+    grid-area: header;
+}
+.footer{
+    grid-row: 1 / 3;
+    grid-column: 1 / 2;
+}
+```
 
 ### ギャッププロパティ
 
-#### grap
+#### (row-/column-)gap
 
-#### column-gap
+マルチカラム、フレックス、グリッド間の列方向、行方向の隙間をまとめて指定する。
 
-#### row-gap
+```css
+.multicol{
+    columns: 3;
+    gap: 3rem;
+}
+```
 
 ### box配置系プロパティ
 
-#### justify-self
+#### (justify/align/place)-(self/itmes/content)
 
-#### justify-items
+justify-は主軸方向のレイアウトを、align-は交差軸方向のレイアウトを制御する。place-は主軸と交差軸をまとめて指定する。
 
-#### justify-content
+-selfはアイテムに対して直接指定するが、-itmesや-contentはコンテナに指定してその子アイテムのレイアウトを制御する。また、flex-wrap:wrapなどでアイテムが改行されている場合や、グリッドで行・列の概念がある場合、-itmes は 一つの行や列の中での、個々の子アイテムの位置を制御するのに対して、-contentは、行や列自体をどのように配置するかを制御する。
 
-#### align-self
+startやend,normalやstretch,centerなどが指定できる。
 
-#### align-items
-
-#### align-content
-
-#### place-self
-
-#### place-items
-
-#### place-content
+```css
+.item{
+    grid-area: 1/2/3/4;
+    justify-self: start;
+}
+```
 
 ### コンテナクエリ系プロパティ
 
